@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Create Resume Builder</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      main {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1,
+      h3 {
+        color: #006699;
+      }
+      .form-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      /* Navigation Bar */
+      nav.nav-Bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #004466;
+        padding: 15px;
+        color: white;
+      }
+      /* Page Heading */
+      h1.page-Heading {
+        font-size: 2rem;
+        margin: 0;
+      }
+      /* Buttons */
+      button {
+        background-color: #006699;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #004466;
+      }
+      .buttons-Gen-Down-Link {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+      }
+      .buttons-Color {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+      }
+      .color-Styling {
+        margin-left: 10px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+      }
+      .input-Label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      /* Resume Styling */
+      .generate-Resume {
+        display: flex;
+        justify-content: space-between;
+      }
+      .left-Portion,
+      .right-Portion {
+        width: 45%;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+      .dot,
+      .dot-Skill {
+        width: 10px;
+        height: 10px;
+        background-color: #006699;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+      }
+      /* Contact Section */
+      .contact-Sec .contact-Info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .info-Icon {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <!-- Main Page Heading -->
+      <nav class="nav-Bar">
+        <div class="nav-Right">
+          <h1 class="page-Heading"> Create Resume Builder</h1>
+          <p class="page-SubHeading">by Mohammed Ali</p>
+        </div>
+        <!-- Button for Filling Dummy Information -->
+        <button onclick="dummyInfo()" class="dummy-Info" id="Dummy-Info">
+          Fill Dummy Data
+        </button>
+      </nav>
+
+      <!-- Input Form -->
+      <form id="resume-Form">
+        <!-- Personal Info Section -->
+        <div class="form-Sec">
+          <h3 class="input-Heading">Personal Info</h3>
+
+          <!-- Full Name -->
+          <label for="fullName-Input" class="input-Label">Full Name</label>
+          <input
+            type="text"
+            id="fullName-Input"
+            class="form-input"
+            placeholder="Enter here"
+            required
+          />
+
+          <!-- Designation -->
+          <label for="designation-Input" class="input-Label">Designation</label>
+          <input
+            type="text"
+            id="designation-Input"
+            class="form-input"
+            placeholder="Enter here"
+            required
+          />
+
+          <!-- Profile Image -->
+          <label for="profileImage-Input" class="input-Label">Profile Image</label>
+          <input
+            type="file"
+            id="profileImage-Input"
+            class="form-input"
+            accept="Image/png, Image/jpeg"
+            required
+          />
+
+          <!-- About Me Text Area-->
+          <label for="aboutMe-Input" class="input-Label">About Me</label>
+          <textarea
+            id="aboutMe-Input"
+            class="form-input"
+            rows="3"
+            placeholder="Enter here"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="form-Sec">
+          <h3 class="input-Heading">Skills</h3>
+          <div id="skill-div">
+            <input
+              type="text"
+              id="skills-Input"
+              class="form-input"
+              placeholder="Enter here"
+              required
+            />
+          </div>
+          <button class="add-Button">Add +</button>
+        </div>
+      </form>
+
+      <!-- Buttons of Generating Download Link -->
+      <div class="buttons-Gen-Down-Link">
+        <button class="buttons" id="Generate-Resume">Generate Resume</button>
+        <button class="buttons" id="Download-PDF">Download PDF</button>
+        <button class="buttons" id="Share-Link">Share Link</button>
+      </div>
+
+      <!-- Customize Colors -->
+      <div class="buttons-Color">
+        <p class="color-Text">Change Colors:</p>
+        <input type="color" class="color-Styling" id="Color-01" value="red" />
+        <input type="color" class="color-Styling" id="Color-02" value="#f4f4f4" />
+      </div>
+    </main>
+
+    <main class="container">
+      <main class="generate-Resume">
+        <section class="left-Portion">
+          <h1 class="name" contenteditable="true">Mohammed Ali sheikh</h1>
+          <h3 class="designation" contenteditable="true">
+            software Engineer 
+          </h3>
+          <img src="alisheikh.jpg" alt="alisheikh Image" id="imgOutput" />
+          <h4 class="heading-AboutMe" contenteditable="true">About Me</h4>
+          <p class="para-AboutMe" contenteditable="true">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
+
+          <!-- Contact Info -->
+          <div class="contact-Sec">
+            <div class="contact-Info">
+              <div class="info-Icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <p class="info-Text phone" contenteditable="true">+92 3029059694</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="right-Portion">
+          <div class="section-Experience">
+            <h3 class="heading-Experience" contenteditable="true">Experience</h3>
+            <h5 class="title-Experience" contenteditable="true">
+              Enter your position title here
+            </h5>
+            <p class="CRO" contenteditable="true">
+              A.I Techolongies/ Jan 2021 - August 2022
+            </p>
+          </div>
+
+          <div class="section-Skills">
+            <h3 class="heading-Skills" contenteditable="true">Skills</h3>
+            <p class="skills" contenteditable="true">JavaScript, HTML, CSS,MS Office,Team Work,Communication,Adobe photoshop</p>
+          </div>
+        </section>
+      </main>
+    </main>
+
+    <script>
+      function dummyInfo() {
+        document.getElementById("fullName-Input").value = "John Doe";
+        document.getElementById("designation-Input").value = "Software Engineer";
+        document.getElementById("aboutMe-Input").value =
+          "Experienced software engineer with expertise in web development.";
+      }
+    </script>
+  </body>
+</html>
